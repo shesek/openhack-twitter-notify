@@ -1,0 +1,12 @@
+{
+  "name": "openhack-twitter-notify",
+  "version": "0.0.1",
+  "main": "index.coffee",
+  "author": "Nadav Ivgi",
+  "license": "BSD",
+  "dependencies": {
+    "coffee-script": "~1.4.0",
+    "twit": "~1.0.7",
+    "mongoose": "~3.4.0"
+  }
+}

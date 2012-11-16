@@ -1,5 +1,6 @@
 Twit = require 'twit'
 mongoose = require 'mongoose'
+
 interval = (process.env.INTERVAL || 600) * 1000
 template = process.env.TEMPLATE || "@{user}: {text}"
 
@@ -41,7 +42,7 @@ pull = ->
 # Expose the `persist` and `read` functions, keep the rest in the private scope
 { persist, read } = do ->
   unless process.env.MONGO_URI
-    # Return mock persist/read that do nothing if no MONGOLAB_URI is not supplied
+    # Return mock persist/read that do nothing if no MONGO_URI is not supplied
     # (for local testing)
     return persist: (->), read: (_id, cb) -> cb null, 0
 
@@ -58,6 +59,6 @@ pull = ->
 # Run!
 read 'since_id', (err, id) ->
   return console.warn err if err?
-  since_id = id
+  since_id = id || 0
   do pull
   setInterval pull, interval

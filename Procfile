@@ -1,0 +1,2 @@
+worker: coffee index.coffee
+
